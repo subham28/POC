@@ -1,5 +1,6 @@
 package com.home.upload.exception;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import graphql.ErrorType;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
@@ -15,6 +16,11 @@ public class GrapQLException extends RuntimeException implements GraphQLError {
         extensions.put("message", message);
     }
 
+    @Override
+    @JsonIgnore
+    public StackTraceElement[] getStackTrace() {
+        return super.getStackTrace();
+    }
     @Override
     public List<SourceLocation> getLocations() {
         return null;
